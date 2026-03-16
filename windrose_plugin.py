@@ -46,7 +46,7 @@ class WindRosePlugin:
         return action
 
     def initGui(self):
-        icon_path = os.path.join(self.plugin_dir, 'icon.png')  # 可放置一个图标文件
+        icon_path = os.path.join(self.plugin_dir, 'icons', 'windrose.svg')  # 可放置一个图标文件
         self.add_action(
             icon_path,
             text=self.tr(u'风向玫瑰图'),
