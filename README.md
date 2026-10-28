@@ -2,10 +2,6 @@
 
 <p align="left">
   <img src="https://img.shields.io/badge/status-feature--complete-brightgreen?style=flat&logo=checkmarx&logoColor=white" alt="Status">
-  <a href="https://plugins.qgis.org/plugins/windrose/"><img src="https://img.shields.io/qgis/plugin/v/windrose?style=flat&label=qgis%20plugin&logo=qgis&logoColor=white&color=589632" alt="QGIS Plugin"></a>
-  <a href="https://plugins.qgis.org/plugins/windrose/"><img src="https://img.shields.io/qgis/plugin/dt/windrose?style=flat&label=downloads&color=blue" alt="Downloads"></a>
-  <a href="https://github.com/OpenQGIS/WindRose/releases"><img src="https://img.shields.io/github/v/release/OpenQGIS/WindRose?style=flat&color=007ec6&label=release" alt="Release"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/OpenQGIS/WindRose?style=flat&color=blue" alt="License"></a>
 </p>
 
 > 💡 **项目状态说明 (Project Status)**：  
