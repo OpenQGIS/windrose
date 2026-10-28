@@ -1,5 +1,16 @@
 # WindRose - Wind Rose Generator for QGIS
 
+<p align="left">
+  <img src="https://img.shields.io/badge/status-feature--complete-brightgreen?style=flat&logo=checkmarx&logoColor=white" alt="Status">
+  <a href="https://plugins.qgis.org/plugins/windrose/"><img src="https://img.shields.io/qgis/plugin/v/windrose?style=flat&label=qgis%20plugin&logo=qgis&logoColor=white&color=589632" alt="QGIS Plugin"></a>
+  <a href="https://plugins.qgis.org/plugins/windrose/"><img src="https://img.shields.io/qgis/plugin/dt/windrose?style=flat&label=downloads&color=blue" alt="Downloads"></a>
+  <a href="https://github.com/OpenQGIS/WindRose/releases"><img src="https://img.shields.io/github/v/release/OpenQGIS/WindRose?style=flat&color=007ec6&label=release" alt="Release"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/OpenQGIS/WindRose?style=flat&color=blue" alt="License"></a>
+</p>
+
+> 💡 **项目状态说明 (Project Status)**：  
+> 基于气象数据的风向风速玫瑰图生成、样式映射与多格式矢量导出体系已**构建完备并稳定运行（Feature-Complete）**。当前处于长期稳定维护状态，保障数据源接口与 QGIS 核心环境的持续兼容。
+
 **WindRose** is a QGIS plugin that generates wind rose diagrams from point locations using the [Open-Meteo](https://open-meteo.com/) historical weather API. It supports interactive point selection, manual coordinate input, monthly data filtering, multiple visual styles, and SVG export.
 
 ## Features
