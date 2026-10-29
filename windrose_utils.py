@@ -11,6 +11,7 @@ windrose_utils.py
 - 预览和生成共享同一套图层创建函数，消除代码重复
 """
 
+import logging
 import numpy as np
 from qgis.core import (
     QgsVectorLayer, QgsFeature, QgsGeometry, QgsField, QgsPointXY,
@@ -24,6 +25,8 @@ from qgis.PyQt.QtCore import QVariant
 from qgis.PyQt.QtGui import QColor
 
 from . import i18n
+
+logger = logging.getLogger("WindRose")
 
 # ─── 全局常量 ───────────────────────────────────────────────────────
 
@@ -393,8 +396,8 @@ def create_coord_lines_layer(lon, lat, freq, angles, scale, name,
             QgsProperty.fromField("Angle"))
         layer.setLabeling(QgsVectorLayerSimpleLabeling(settings))
         layer.setLabelsEnabled(True)
-    except Exception:
-        pass
+    except Exception as e:
+        logger.debug("Coordinate labeling error ignored: %s", e)
 
     _add_type_field(layer, LAYER_TYPE_COORD)
     return layer, length
@@ -500,8 +503,8 @@ def create_direction_labels_layer(lon, lat, length, name):
         settings.setFormat(text_fmt)
         layer.setLabeling(QgsVectorLayerSimpleLabeling(settings))
         layer.setLabelsEnabled(True)
-    except Exception:
-        pass
+    except Exception as e:
+        logger.debug("Direction labeling error ignored: %s", e)
 
     _add_type_field(layer, LAYER_TYPE_DIRECTION)
     return layer

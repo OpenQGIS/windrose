@@ -12,8 +12,11 @@ windrose_dialog.py
 """
 
 import os
+import logging
 import tempfile
 from datetime import datetime
+
+logger = logging.getLogger("WindRose")
 
 from qgis.PyQt import uic
 from qgis.PyQt.QtCore import pyqtSignal, Qt, QThread, QSize, QTimer
@@ -138,12 +141,12 @@ class WindRoseDialog(QDialog, FORM_CLASS):
         if self._preview_job:
             try:
                 self._preview_job.cancel()
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Cancel preview job ignored: %s", e)
             try:
                 self._preview_job.finished.disconnect()
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Disconnect preview job ignored: %s", e)
         self._preview_job = None
         self._preview_layers = []
         self._is_rendering = False
@@ -153,8 +156,8 @@ class WindRoseDialog(QDialog, FORM_CLASS):
         if self._worker:
             try:
                 self._worker.cancel()
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Cancel worker ignored: %s", e)
         if self._thread and self._thread.isRunning():
             self._thread.quit()
             self._thread.wait(2000)
@@ -752,8 +755,8 @@ class WindRoseDialog(QDialog, FORM_CLASS):
                     if mem.labeling():
                         fl.setLabeling(mem.labeling().clone())
                         fl.setLabelsEnabled(True)
-                except Exception:
-                    pass
+                except Exception as e:
+                    logger.debug("Copy labeling ignored: %s", e)
         return file_layers
 
     def _on_generate_error(self, msg):
@@ -767,14 +770,14 @@ class WindRoseDialog(QDialog, FORM_CLASS):
     def _show_warning(self, msg):
         try:
             QMessageBox.warning(self, i18n.tr("dialog_title"), msg)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.warning("Show warning dialog failed: %s (msg: %s)", e, msg)
 
     def _show_critical(self, msg):
         try:
             QMessageBox.critical(self, i18n.tr("dialog_title"), msg)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.error("Show critical dialog failed: %s (msg: %s)", e, msg)
 
     def _show_auto_close(self, title, message, timeout_ms=700):
         box = QMessageBox(self)

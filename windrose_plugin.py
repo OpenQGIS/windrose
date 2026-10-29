@@ -5,8 +5,11 @@ windrose_plugin.py
 QGIS 插件主类：菜单/工具栏注册、地图选点、对话框管理。
 """
 
+import logging
 from qgis.PyQt.QtCore import QCoreApplication, QSettings
 from qgis.PyQt.QtGui import QIcon
+
+logger = logging.getLogger("WindRose")
 from qgis.PyQt.QtWidgets import QAction, QMenu
 from qgis.gui import QgsMapToolEmitPoint
 from qgis.core import (
@@ -87,8 +90,8 @@ class WindRosePlugin:
             try:
                 self.dialog.close()
                 self.dialog.deleteLater()
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Dialog cleanup error ignored: %s", e)
             self.dialog = None
 
         for action in self.actions:
