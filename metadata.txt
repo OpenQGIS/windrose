@@ -1,15 +1,72 @@
 [general]
 name=WindRose
-description=生成风向玫瑰图（支持点选、手动输入）
-version=1.3.6
+description=生成风向玫瑰图（支持点选、手动输入）/ Generate wind rose diagrams (supports map picking and manual input)
+version=2.4.5
 qgisMinimumVersion=3.28
 qgisMaximumVersion=4.99
 author=hexiaosang, OpenQGIS
 email=sho@live.cn
-about=基于Open-Meteo API生成风向玫瑰图，可自定义样式并导出SVG。
-tracker=https://github.com/yourusername/windrose/issues
-repository=https://github.com/yourusername/windrose
+about=基于Open-Meteo API生成风向玫瑰图，支持同心圆环样式、多种导出格式、实时预览、数据缓存。
+tracker=https://github.com/OpenQGIS/WindRose/issues
+repository=https://github.com/OpenQGIS/WindRose
 tags=windrose,风向,玫瑰图,气象,wind direction,rose diagram,meteorology
-homepage=https://github.com/yourusername/windrose
+homepage=https://github.com/OpenQGIS/WindRose
 category=Analysis
 icon=icons/icon.png
+changelog=
+    Version 2.4.4
+    - Fixed fatal crash on plugin unload (access violation) / 修复插件卸载时的致命崩溃（访问违规）
+    Version 2.4.3
+    - Fixed exec_() removed in PyQt6 / 修复PyQt6中exec_()被移除的问题
+    Version 2.4.2
+    - Fixed QMessageBox enum error in QGIS 4 (PyQt6) / 修复QGIS4中QMessageBox枚举错误
+    Version 2.4.1
+    - Fixed preview failure in QGIS 4 (PyQt6) / 修复QGIS4中预览失败的问题
+    - PyQt5/6 compatible Qt enum access / PyQt5/6兼容的Qt枚举访问
+    - Fixed preview button stuck disabled after render error / 修复渲染异常后预览按钮卡死的问题
+    Version 2.4.0
+    - Collapsible help panel and GDB export / 可折叠帮助面板和GDB导出
+    - Added collapsible help sidebar with Quick Start, Features, FAQ / 添加可折叠帮助侧边栏
+    - Added GDB (File Geodatabase) export format / 添加GDB导出格式
+    - Fixed export not working when only "Export File" is checked / 修复只勾选导出文件时不执行导出的问题
+    - Improved button styling with grouped layout / 改进按钮样式和分组布局
+    - Help panel uses QTextBrowser for better text display / 帮助面板使用QTextBrowser显示
+    Version 2.3.0
+    - Fix export and file-based loading / 修复导出功能并从文件加载图层
+    - Fixed empty export files (GPKG/KML/SHP) / 修复导出文件为空的问题
+    - Load layers from exported files instead of memory / 从导出文件加载图层（而非内存）
+    - Preserve styles via renderer clone / 通过 renderer 克隆保持样式
+    - Fixed writeAsVectorFormatV3 API error / 修复 writeAsVectorFormatV3 API 调用错误
+    - Auto-update path when switching export format / 切换导出格式时自动更新路径
+    - ASCII-safe export names for GDAL compatibility / ASCII 安全导出名兼容 GDAL
+    Version 2.2.0
+    - Concentric ring wind rose with speed data / 同心圆环样式支持风速数据
+    - Ring mode with background circles and direction labels / 圆环模式添加背景圆环和方向标注
+    - Local file export (GPKG/KML/SHP) / 支持导出为本地文件
+    - Scrollable UI panel / 可滚动界面面板
+    - Fixed preview window size issue / 修复预览窗口变大问题
+    - Input fields directly editable / 经纬度输入框可直接编辑
+    - Show/hide coordinate points option / 显示坐标点选项
+    Version 2.1.0
+    - Preview display optimization (3:2 ratio adaptive) / 优化预览显示（3:2比例自适应）
+    - Data caching for faster style adjustments / 数据缓存机制，修改样式时无需重新下载
+    - Fixed concentric circle style difference / 修复同心圆样式与扇形样式的视觉差异
+    - Preview button moved to bottom bar / 预览按钮移到窗口底部避免遮挡
+    Version 2.0.0
+    - Card-style layout redesign / 卡片式布局重构
+    - Real-time preview functionality / 添加实时预览功能
+    - Window size optimization / 窗口尺寸优化
+    Version 1.7.0
+    - Added preview functionality / 添加预览功能
+    Version 1.6.0
+    - Side-by-side output options / 输出选项左右并排
+    Version 1.5.0
+    - Compact UI layout / 紧凑UI布局
+    Version 1.4.0
+    - Fixed English mode style / 修复英文模式样式
+    Version 1.3.9
+    - Added English interface / 添加英文界面支持
+    Version 1.3.8
+    - Optimized SVG display / 优化SVG显示
+    Version 1.3.7
+    - Updated icon / 更新图标
