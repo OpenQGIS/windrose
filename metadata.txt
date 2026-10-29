@@ -1,7 +1,7 @@
 [general]
 name=WindRose
 description=生成风向玫瑰图（支持点选、手动输入）/ Generate wind rose diagrams (supports map picking and manual input)
-version=2.4.5
+version=2.4.6
 qgisMinimumVersion=3.28
 qgisMaximumVersion=4.99
 author=hexiaosang, OpenQGIS
@@ -14,6 +14,8 @@ homepage=https://github.com/OpenQGIS/WindRose
 category=Analysis
 icon=icons/icon.png
 changelog=
+    Version 2.4.6
+    - 🐛 修复bug提升性能 / Bug fixes and performance improvements
     Version 2.4.4
     - Fixed fatal crash on plugin unload (access violation) / 修复插件卸载时的致命崩溃（访问违规）
     Version 2.4.3
