@@ -37,23 +37,14 @@ from .style_manager import StyleManager
 from .export_helper import ExportHelper
 from . import i18n
 
-# PyQt5/6 兼容：模块加载时检测一次，后续使用局部变量，零运行时开销
-try:
-    _TRANSPARENT = Qt.GlobalColor.transparent
-    _KEEP_ASPECT = Qt.AspectRatioMode.KeepAspectRatio
-    _SMOOTH = Qt.TransformationMode.SmoothTransformation
-    _ALIGN_CENTER = Qt.AlignmentFlag.AlignCenter
-    _WAIT_CURSOR = Qt.CursorShape.WaitCursor
-    _MSG_INFO = QMessageBox.Icon.Information
-    _MSG_NO_BTN = QMessageBox.StandardButton.NoButton
-except AttributeError:
-    _TRANSPARENT = Qt.transparent
-    _KEEP_ASPECT = Qt.KeepAspectRatio
-    _SMOOTH = Qt.SmoothTransformation
-    _ALIGN_CENTER = Qt.AlignCenter
-    _WAIT_CURSOR = Qt.WaitCursor
-    _MSG_INFO = QMessageBox.Information
-    _MSG_NO_BTN = QMessageBox.NoButton
+# PyQt5/6 强类型枚举兼容（符合 QGIS 4 / Qt6 Scoped Enum 规范）
+_TRANSPARENT = Qt.GlobalColor.transparent
+_KEEP_ASPECT = Qt.AspectRatioMode.KeepAspectRatio
+_SMOOTH = Qt.TransformationMode.SmoothTransformation
+_ALIGN_CENTER = Qt.AlignmentFlag.AlignCenter
+_WAIT_CURSOR = Qt.CursorShape.WaitCursor
+_MSG_INFO = QMessageBox.Icon.Information
+_MSG_NO_BTN = QMessageBox.StandardButton.NoButton
 
 FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), 'windrose_dialog.ui'))

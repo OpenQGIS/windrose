@@ -379,13 +379,7 @@ def create_coord_lines_layer(lon, lat, freq, angles, scale, name,
         settings = QgsPalLayerSettings()
         settings.fieldName = "Direction"
         settings.enabled = True
-        try:
-            settings.placement = QgsPalLayerSettings.Placement.Line
-        except AttributeError:
-            try:
-                settings.placement = QgsPalLayerSettings.Line
-            except AttributeError:
-                pass
+        settings.placement = QgsPalLayerSettings.Placement.Line
         settings.lineSettings().setPlacementFlags(
             QgsPalLayerSettings.LinePlacementFlag.OnLine)
         settings.format().size = 8
@@ -480,7 +474,7 @@ def create_direction_labels_layer(lon, lat, length, name):
         settings = QgsPalLayerSettings()
         settings.fieldName = "Direction"
         settings.enabled = True
-        settings.placement = QgsPalLayerSettings.AroundPoint
+        settings.placement = QgsPalLayerSettings.Placement.AroundPoint
         settings.dist = 2
         quadrant_expr = """CASE
             WHEN "Direction" = 'N' THEN 1

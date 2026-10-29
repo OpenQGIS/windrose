@@ -118,15 +118,15 @@ def _export_multi_layer(layers, output_path, driver, dest_crs, project):
         options.driverName = driver
         if i == 0:
             options.actionOnExistingFile = (
-                QgsVectorFileWriter.CreateOrOverwriteFile)
+                QgsVectorFileWriter.ActionOnExistingFile.CreateOrOverwriteFile)
         else:
             options.actionOnExistingFile = (
-                QgsVectorFileWriter.CreateOrOverwriteLayer)
+                QgsVectorFileWriter.ActionOnExistingFile.CreateOrOverwriteLayer)
         options.layerName = get_export_name(layer)
         options.ct = QgsCoordinateTransform(layer.crs(), dest_crs, project)
         error = QgsVectorFileWriter.writeAsVectorFormatV3(
             layer, output_path, transform_context, options)
-        if error[0] != QgsVectorFileWriter.NoError:
+        if error[0] != QgsVectorFileWriter.WriterError.NoError:
             raise Exception(f"Export error: {error[1]}")
 
 
@@ -138,7 +138,7 @@ def _export_single_layer(layer, file_path, driver, dest_crs, project):
     options.ct = QgsCoordinateTransform(layer.crs(), dest_crs, project)
     error = QgsVectorFileWriter.writeAsVectorFormatV3(
         layer, file_path, transform_context, options)
-    if error[0] != QgsVectorFileWriter.NoError:
+    if error[0] != QgsVectorFileWriter.WriterError.NoError:
         raise Exception(f"Export error: {error[1]}")
 
 
@@ -162,14 +162,14 @@ def _export_to_gdb(layers, output_path, dest_crs, project):
 
         if i == 0:
             options.actionOnExistingFile = (
-                QgsVectorFileWriter.CreateOrOverwriteFile)
+                QgsVectorFileWriter.ActionOnExistingFile.CreateOrOverwriteFile)
         else:
             options.actionOnExistingFile = (
-                QgsVectorFileWriter.CreateOrOverwriteLayer)
+                QgsVectorFileWriter.ActionOnExistingFile.CreateOrOverwriteLayer)
 
         options.layerName = get_export_name(layer)
 
         error = QgsVectorFileWriter.writeAsVectorFormatV3(
             layer, output_path, transform_context, options)
-        if error[0] != QgsVectorFileWriter.NoError:
+        if error[0] != QgsVectorFileWriter.WriterError.NoError:
             raise Exception(f"Export error: {error[1]}")
